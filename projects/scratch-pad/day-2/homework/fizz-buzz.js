@@ -12,7 +12,17 @@
 */
 function fizzBuzz() {
     // YOUR CODE GOES BELOW HERE //
-
+    for(let i =1; i <=100; i++){//use for loop to count from 1-100
+        if(i % 3 === 0 && i % 5 === 0){//if statement for multiples of 3 & 5
+            console.log('FizzBuzz');//logs FizzBuzz 
+     }else if(i % 3 === 0){// else if statement for multiples of 3
+        console.log('Fizz');//logs Fizz
+    }else if(i % 5 === 0){//else if statement for multiples of 5
+        console.log('Buzz');//logs Buzz
+    }else{
+        console.log(i)
+    }
+    }
 
 
     // YOUR CODE GOES ABOVE HERE //

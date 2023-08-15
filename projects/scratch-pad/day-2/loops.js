@@ -12,7 +12,9 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
-  
+  for(let i = 0; i < array.length; i++){//for loop to access array indexes
+    console.log(array[i]);//logs each index
+  }
   
   
   
@@ -25,7 +27,9 @@ function printArrayValues(array) {
  */
 function printArrayValuesInReverse(array) {
   // YOUR CODE BELOW HERE //
-  
+  for(let i = array.length-1; i >= 0; i--){//for loop decrementing backwards over array
+    console.log(array[i]);//logs each index
+  }
   
   
   
@@ -37,7 +41,11 @@ function printArrayValuesInReverse(array) {
  */
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
-  
+  let output = [];
+  for(let key in object){//for in loop to access object properties
+    output.push(key)//puts each key into output array
+    
+  }return output;//=> output
   
   
   
@@ -50,7 +58,9 @@ function getObjectKeys(object) {
  */
 function printObjectKeys(object) {
   // YOUR CODE BELOW HERE //
-  
+  for(let key in object){//use for in to access the keys
+    console.log(key)//logs keys 
+  }
   
   
   
@@ -62,7 +72,10 @@ function printObjectKeys(object) {
  */
 function getObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  
+  let output = [];
+  for(let key in object){//use for in loop to access values
+    output.push(object[key]);
+  }return output;
   
   
   
@@ -75,7 +88,9 @@ function getObjectValues(object) {
  */
 function printObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  
+  for(let key in object){//use for in loop to access values
+    console.log(object[key]);//logs values
+  }
   
   
   
@@ -87,7 +102,11 @@ function printObjectValues(object) {
  */
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
-  
+  let output = [];
+  for(let key in object){//use for in loop to access keys
+      output.push(key);// puts keys into output array
+  }
+  return output.length//=>number of items in output
   
   
   
@@ -100,7 +119,13 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-  
+  let output = [];
+  for(let key in object){//use for in loop to access values
+    output.push(object[key]);//puts values into output array
+  }
+  for(let i=output.length-1; i >=0; i--){//use for loop to access indexes in reverse
+    console.log(output[i]);//logs the indexes
+  }
   
   
   
