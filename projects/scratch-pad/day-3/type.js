@@ -35,7 +35,16 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    if(typeof value === 'object' && !Array.isArray(value) && value !== null && !value instanceof Date){//use if statment using typeOf method to see if value is object
+    if(Array.isArray(value)){//use isArray to check if value is array
+         return false;//=>false
+    }
+    if(value === null){//check if value is null
+         return false;//=>false
+    }
+    if(value instanceof Date){//check if value is date
+         return false;//=>false
+    }
+    if(typeof value === 'object'){ //check if is object
         return true;//=>true
     }else{
         return false;//=>false
@@ -54,7 +63,17 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+   if(value === null){//check if value is null
+        return false;//=>false
+   }
+   if(value instanceof Date){//check if value is date
+        return false;//=>false
+   }
+   if(typeof value === 'object' || Array.isArray(value)){ //check if is object or array
+       return true;//=>true
+   }else{
+       return false;//=>false
+   }
     
     
     
@@ -82,7 +101,33 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
+    if(Array.isArray(value)){//use isArray to check if value is array
+        return 'array';//=> array
+   }
+   if(value === null){//check if value is null
+        return 'null';//=> null
+   }
+   if(typeof value === 'string'){//check if value is string
+        return 'string';//=> string
+   }
+   if(typeof value === 'object' && !Array.isArray(value && value !== null) && value instanceof Date === false){ //check if value is object
+       return 'object';//=>true
+   }
+   if(typeof value === undefined){//check if value is undefined
+       return 'undefined';//=> undefined
+   } 
+   if(typeof value === 'number'){//check if value is number
+        return 'number';//=> number
+   }
+   if(typeof value === 'boolean'){//check if value is boolean
+        return 'boolean';//=> boolean
+   }
+   if(value instanceof Date){//check if value is date
+        return 'date';//=> date
+   }
+   if(typeof value === 'function'){// check if value is function
+        return 'function';//=> function
+}
     
     
     

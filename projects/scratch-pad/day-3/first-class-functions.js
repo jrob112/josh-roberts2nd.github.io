@@ -13,7 +13,9 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    return function isGreater(value){
+        return value > base;
+    }
     
     
     
@@ -27,7 +29,9 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    return function isGreater(value){
+        return value < base;
+    }
     
     
     
@@ -41,7 +45,9 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
+    return function (string){
+       return  string[0].toLowerCase() === startsWith.toLowerCase();
+    }
     
     
     
@@ -55,7 +61,9 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    return function (string){
+        return  string[string.length-1].toLowerCase() === endsWith.toLowerCase();
+     }
     
     
     
@@ -71,7 +79,11 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
+    let output = [];
+    for(let i =0; i < strings.length; i++){//for loop to access each string
+        output.push(modify(strings[i]));// put the modified string into output array
+    }
+        return output;
     
     
     
@@ -89,7 +101,16 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
+    let output = [];
+    for(let i =0; i < strings.length; i++){//for loop to access each string
+       if(test(strings[i])){
+         output.push(strings[i])};// puts the strings that pass test into output array
+    }
+    if(output.length === strings.length){//compare string array to output array
+        return true;//=> true
+    }else{
+        return false;//=> false
+    }
     
     
     

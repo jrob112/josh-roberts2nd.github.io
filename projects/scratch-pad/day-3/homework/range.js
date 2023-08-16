@@ -23,9 +23,18 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
+    let output = [];
+    if(start < end){
+        for(let i =start; i <=end; i++){//for loop that counts from start to end by 1 ascending
+            output.push(i);// puts number into output array
+        }
+    }else{
+        for(let i =start; i >=end; i--){//for loop that counts from end to start by 1 descending
+            output.push(i);// put number into output arrary
+        }
+    }
     
-    
-    
+    return output;
     
     // YOUR CODE GOES ABOVE HERE //
 }
