@@ -78,10 +78,11 @@ function makeContactList() {
         printAllContactNames: function(){
             let output = [];
             for(let i =0; i < contacts.length; i++){//loops over contacts array
-                 output.push(`${contacts[i].nameFirst + contacts[i].nameLast}`);//logs each contact on with folling contact on next line
+                output.push(`${contacts[i].nameFirst} ${contacts[i].nameLast}`);//logs each contact on with folling contact on next line
             }
-            return output.join('\n');// use join to covert output array into string
-        }
+            return output.join('\n');
+        
+    }
     }
 }
 
