@@ -35,7 +35,7 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
-    return {id: id, nameFirst: nameFirst, nameLast: nameLast}
+    return {id: id, nameFirst: nameFirst, nameLast: nameLast}//=> the new keys with values
 } 
 
 
@@ -70,7 +70,7 @@ function makeContactList() {
         removeContact: function(contact){
         
             for(let i =0; i < contacts.length; i++){//loops over contacts array
-                if(contact.id === contacts[i].id){//if contact matches 
+                if(contact.id === contacts[i].id){//if contact matches by id key
                      contacts.splice(i, 1);// use splice to remove the contact at the index that comes from the if statement
            }
             }
@@ -78,9 +78,9 @@ function makeContactList() {
         printAllContactNames: function(){
             let output = [];
             for(let i =0; i < contacts.length; i++){//loops over contacts array
-                output.push(`${contacts[i].nameFirst} ${contacts[i].nameLast}`);//logs each contact on with folling contact on next line
+                output.push(`${contacts[i].nameFirst} ${contacts[i].nameLast}`);//puts the full name into output array
             }
-            return output.join('\n');
+            return output.join('\n');//=> names on new line for each
         
     }
     }
