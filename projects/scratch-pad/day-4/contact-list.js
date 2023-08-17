@@ -55,24 +55,22 @@ function makeContactList() {
         },
         findContact: function(fullName){
             let output = [];
-            for(let i =0; i < contacts.length; i++){//for loop over contacts array
-                if(contacts[i].nameFirst + ' ' + contacts[i].nameLast === fullName){//check if fullName matches contact name
-                    output.push(contacts[i]);//=> fullName
+                for(let i =0; i < contacts.length; i++){//for loop over contacts array
+                    if(contacts[i].nameFirst + ' ' + contacts[i].nameLast === fullName){//check if fullName matches contact name
+                        output.push(contacts[i]);//=> fullName
+                    }
+                    if(output.length > 0){// if statement to see if ouput array has any values
+                        return output[0];//=> output
+                    }else{
+                        return undefined;//=> undefined
+                    }
                 }
-            if(output.length > 0){// if statement to see if ouput array has any values
-                return output[0];//=> output
-            }else{
-                return undefined;//=> undefined
-            }
-              }
-            
         },
         removeContact: function(contact){
-        
             for(let i =0; i < contacts.length; i++){//loops over contacts array
                 if(contact.id === contacts[i].id){//if contact matches by id key
                      contacts.splice(i, 1);// use splice to remove the contact at the index that comes from the if statement
-           }
+                }
             }
         },
         printAllContactNames: function(){
@@ -82,7 +80,7 @@ function makeContactList() {
             }
             return output.join('\n');//=> names on new line for each
         
-    }
+        }
     }
 }
 
