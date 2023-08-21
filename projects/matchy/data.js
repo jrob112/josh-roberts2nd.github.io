@@ -77,14 +77,15 @@ console.log(animals.length);
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 // use an array because it holds singular values
-var friends = [];
-var x = function getRandom(){
-  return Math.random(Math.floor(animals));
+var friends = [];// variablee friends with array as value
+var a = animals.length;
+function getRandom(){//function that gets random number of animals array indexes
+  return Math.floor(Math.random() * a);
 };
-friends.name = animals[x];
+console.log(getRandom());
+friends.push(animals[getRandom()].name);//put random animals name into friends array
 console.log(friends);
-friends['friends'] = friends;
-
+animals[getRandom()].friends = friends;//add friends key to anilmals with friends array as value
 
 
 
