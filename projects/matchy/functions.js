@@ -40,8 +40,8 @@ function replace(array, name, replacement) {
 //////////////////////////////////////////////////////////////////////
 function remove(array, name){
     for(let i = 0; i < array.length; i++){//for loop over array
-        if(Object.keys(array[i]).includes(name)){//if statement comparing name to name property ant each index of array
-            array.splice(i, 0);//delete the index of the array
+        if(array[i].name === name){//if statement comparing name to name property ant each index of array
+             array.splice(i, 1);//delete the index of the array
         }
     }
 }
@@ -51,10 +51,13 @@ function remove(array, name){
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 function add(array, object){
+    let count = 0;
     for(let i=0; i < array.length; i++){//for loop over array
-        if(array[i].name.length < 0 && array[i].species.length < 0 && !array[i].name === object.name){//if statement comparing if name property at each index and species property at each index has value
-            array.push(object);//adds object to the array
+        if(array[i].name === object.name){//if statement comparing if name property at each index and species property at each index has value
+            count++;
         }
+    }if(count === 0 && object.name.length > 0 && object.species.length > 0){
+        array.push(object);//adds object to the array
     }
 }
 
