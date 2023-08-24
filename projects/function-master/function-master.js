@@ -133,8 +133,8 @@ function isFriend(name, object) {
 function nonFriends(name, array) {
     let output = [];
    for(let i=0; i<array.length; i++){
-    if(array[i].name !== name && !array[i].friends.includes(array[i])){
-        output.push(array[i])
+        if(array[i].name !== name && !array[i].friends.includes(name)){
+        output.push(array[i].name)
     }
    }
     return output;
