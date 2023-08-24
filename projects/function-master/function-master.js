@@ -86,7 +86,7 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-    if(object.noises.length > 0){
+    if(object.noises && object.noises.length > 0 ){//compares of object has noises key and array has values
         return object.noises.join(' ');
     }else{
         return "there are no noises";
@@ -110,7 +110,8 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+     object.friends.push(name);
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -118,7 +119,11 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+    if(object.friends && object.friends.includes(name)){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -126,7 +131,13 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+    let output = [];
+   for(let i=0; i<array.length; i++){
+    if(array[i].name !== name && !array[i].friends.includes(array[i])){
+        output.push(array[i])
+    }
+   }
+    return output;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -134,7 +145,8 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+    object[key] = value;
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
