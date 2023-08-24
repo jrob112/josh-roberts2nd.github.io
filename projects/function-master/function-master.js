@@ -154,7 +154,11 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+    for(let i =0; i<array.length; i++){
+        if(Object.keys(object).includes(array[i])){
+            delete object[array[i]]
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -162,7 +166,7 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+    return array.filter((item, index) => array.indexOf(item) === index);
 }
 
 //////////////////////////////////////////////////////////////////////
