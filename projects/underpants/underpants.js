@@ -20,7 +20,9 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+_.identity = function(value){
+    return value;
+}
 
 /** _.typeOf
 * Arguments:
@@ -41,7 +43,25 @@ var _ = {};
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-
+_.typeOf = function(value){
+    if(typeof value === 'string'){
+        return 'string';
+    }else if(Array.isArray(value)){
+        return 'array';
+    }else if(value === null){
+        return 'null';
+    }else if(typeof value === 'object'){
+        return 'object';
+    }else if(typeof value === 'number'){
+        return 'number';
+    }else if(typeof value === 'boolean'){
+        return 'boolean'
+    }else if(typeof value === 'function'){
+        return 'function';
+    }else{
+        return 'undefined'
+    }
+}
 
 /** _.first
 * Arguments:
@@ -60,7 +80,19 @@ var _ = {};
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
+_.first = function(array, number){
+    if(!Array.isArray(array)){
+        return [];
+    }else if(!number || number === NaN){
+        return array[0];
+    }else if(number < 0){
+        return [];
+    }else if(number > array.length){
+        return array
+    }else{
+        return array.slice(0, number)
+    }
+}
 
 /** _.last
 * Arguments:
@@ -79,7 +111,19 @@ var _ = {};
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last = function(array, number){
+    if(!Array.isArray(array)){
+        return [];
+    }else if(!number || number === NaN){
+        return array[array.length-1];
+    }else if(number < 0){
+        return [];
+    }else if(number > array.length){
+        return array
+    }else{
+        return array.slice(array.length - number)
+    }
+}
 
 /** _.indexOf
 * Arguments:
@@ -96,7 +140,19 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, value){
+    let output = [];
+    for(let i =0; i <array.length; i++){ 
+        if(value === array[i]){
+            return i;
+        }else if(array[i] !== value){
+            output.push(array[i])
+        }
+    }
+    if(output.length > 0 || !Array.isArray(value)){
+        return -1;
+    }
+}
 
 /** _.contains
 * Arguments:
@@ -112,7 +168,13 @@ var _ = {};
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array, value){
+    if(array.includes(value)){
+        return true
+    }else{
+        return false;
+    }
+}
 
 /** _.each
 * Arguments:
@@ -129,7 +191,17 @@ var _ = {};
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-
+_.each = function(collection, func){
+    if(Array.isArray(collection)){
+        for(let i=0; i<collection.length; i++){
+            func(collection[i])
+        }
+    }else{
+        for(let key in collection)(
+            func(collection[key], key, collection)
+        )
+    }
+}
 
 /** _.unique
 * Arguments:
@@ -208,7 +280,20 @@ var _ = {};
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
+_.map = function(collection, funct){
+    let output = [];
+    if(Array.isArray(collection)){
+        for(let i=0; i <collection.length; i++){
+            output.push(funct(collection[i], i, collection))
+        }
+    }else{
+        for(let key in collection){
+            output.push(funct(collection[key], key, collection))
+        }
 
+    }
+        return output;
+}
 
 /** _.pluck
 * Arguments:
