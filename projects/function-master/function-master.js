@@ -20,10 +20,9 @@ function keysToString(object) {
 
 function valuesToString(object) {
     let output = [];
-    let x = Object.values(object);//x = array of values from object
-    for(let i = 0; i < x.length; i++){//for loop over x array
-        if(typeof x[i]  === 'string'){//if statement comparing if each itteration is a string
-        output.push(x[i]);//puts itteration into output
+    for(let key in object){//for in loop over object
+        if(typeof object[key]  === 'string'){//if statement comparing if each itteration is a string
+        output.push(object[key]);//puts itteration into output
         }
     }
         return output.join(' ');//=> output joined with a space
