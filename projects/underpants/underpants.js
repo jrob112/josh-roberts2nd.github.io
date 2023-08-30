@@ -193,8 +193,8 @@ _.contains = function(array, value){
 */
 _.each = function(collection, func){
     if(Array.isArray(collection)){
-        for(let i=0; i<collection.length; i++){
-            func(collection[i])
+        for(let i = 0; i < collection.length; i++){
+            func(collection[i], i, collection)
         }
     }else{
         for(let key in collection)(
@@ -212,7 +212,7 @@ _.each = function(collection, func){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+_.unique = (array) => array.filter((item, index) => array.indexOf(item) === index)
 
 /** _.filter
 * Arguments:
@@ -229,7 +229,15 @@ _.each = function(collection, func){
 * Extra Credit:
 *   use _.each in your implementation
 */
-
+_.filter = (array, func) => {
+    let output = [];
+    for(let i=0; i <array.length; i++){
+     if(func(array[i], i, array)){
+        output.push(array[i])
+     }
+    }
+        return output;
+}
 
 /** _.reject
 * Arguments:
@@ -243,7 +251,15 @@ _.each = function(collection, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = (array, func) => {
+    let output = [];
+    for(let i=0; i <array.length; i++){
+     if(!func(array[i], i, array)){
+        output.push(array[i])
+     }
+    }
+        return output;
+}
 
 /** _.partition
 * Arguments:
@@ -263,7 +279,17 @@ _.each = function(collection, func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-
+_.partition = (array, func) => {
+    let output = [[], []];
+    for(let i =0; i<array.length; i++){
+        if(func(array[i], i, array)){
+            output[0].push(array[i])
+        }else{
+            output[1].push(array[i])
+        }
+    }
+        return output;
+}
 
 /** _.map
 * Arguments:
@@ -305,7 +331,10 @@ _.map = function(collection, funct){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+_.pluck = (array, property) => {  
+    array.map((object) => array.property);
+    
+}
 
 /** _.every
 * Arguments:
@@ -327,7 +356,14 @@ _.map = function(collection, funct){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = (collection, func) => {
+    
+    if(collection.filter(func)){
+        return true;
+    }
+        return false;
+    
+}
 
 /** _.some
 * Arguments:
@@ -349,7 +385,9 @@ _.map = function(collection, funct){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
+_.some = (collection, func) => {
 
+}
 
 /** _.reduce
 * Arguments:
@@ -385,7 +423,7 @@ _.map = function(collection, funct){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
+_.extend = (object1, ...object) => object1.assign(...object)
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
