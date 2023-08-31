@@ -20,3 +20,6 @@
 7) In terminal type => npm install -g opspark
 8) In terminal, type => os install
 9) Select project from dropdown
+
+## how to test 
+from (main) cd..

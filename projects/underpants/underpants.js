@@ -3,6 +3,10 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+//const { result } = require("lodash");
+
+//const { truncate } = require("lodash");
+
 var _ = {};
 
 
@@ -20,9 +24,8 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-_.identity = function(value){
-    return value;
-}
+ _.identity = function(value){ return value;
+ }
 
 /** _.typeOf
 * Arguments:
@@ -212,7 +215,7 @@ _.each = function(collection, func){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-_.unique = (array) => array.filter((item, index) => array.indexOf(item) === index)
+ _.unique = (array) => array.filter((item, index) => array.indexOf(item) === index)
 
 /** _.filter
 * Arguments:
@@ -306,15 +309,15 @@ _.partition = (array, func) => {
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-_.map = function(collection, funct){
+_.map = function(collection, func){
     let output = [];
     if(Array.isArray(collection)){
         for(let i=0; i <collection.length; i++){
-            output.push(funct(collection[i], i, collection))
+            output.push(func(collection[i], i, collection))
         }
     }else{
         for(let key in collection){
-            output.push(funct(collection[key], key, collection))
+            output.push(func(collection[key], key, collection))
         }
 
     }
@@ -332,8 +335,8 @@ _.map = function(collection, funct){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 _.pluck = (array, property) => {  
-    array.map((object) => array.property);
-    
+    let output = array.map((obj) => obj[property]);
+    return output;
 }
 
 /** _.every
@@ -358,11 +361,34 @@ _.pluck = (array, property) => {
 */
 _.every = (collection, func) => {
     
-    if(collection.filter(func)){
-        return true;
+    if(Array.isArray(collection)){
+    if(func === undefined){
+        let store = [];
+        for(let i=0; i <collection.length; i++){
+                if(collection[i]){
+                    store.push(collection[i])
+                }
+        }
+        if(store.length === collection.length){
+            return true
+        }else{
+            return false;
+        }
+    }else{
+    let output = collection.map(func);
+    if(!output.includes(false)){
+       return true;
     }
         return false;
+    }
+}else{
+     let values = Object.values(collection)
+        if(!values.includes(false)){
+            return true;
+        }
+        return false;
     
+}
 }
 
 /** _.some
@@ -386,8 +412,36 @@ _.every = (collection, func) => {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 _.some = (collection, func) => {
-
-}
+   
+    if(Array.isArray(collection)){
+        if(func === undefined){
+            let store = [];
+            for(let i=0; i <collection.length; i++){
+                    if(collection[i]){
+                        store.push(collection[i])
+                    }
+            }
+            if(store.length === collection.length){
+                return true
+            }else{
+                return false;
+            }
+        }else{
+        let output = collection.map(func);
+        if(output.includes(true)){
+           return true;
+        }
+            return false;
+        }
+    }else{
+         let values = Object.values(collection)
+            if(!values.includes(false)){
+                return true;
+            }
+            return false;
+        
+    }
+    }
 
 /** _.reduce
 * Arguments:
@@ -407,7 +461,21 @@ _.some = (collection, func) => {
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = (array, func, seed) =>{
+    let result;
+    if(seed === undefined){//no seed
+        result = array[0];
+        for(let i=1; i<array.length; i++){
+            result = func(result, array[i], i)
+        }
+    }else{//has seed
+        result = seed;
+        for(let i=0; i<array.length; i++){
+            result = func(result, array[i], i)
+        }
+    }
+        return result;
+}
 
 /** _.extend
 * Arguments:
@@ -423,7 +491,7 @@ _.some = (collection, func) => {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-_.extend = (object1, ...object) => object1.assign(...object)
+_.extend = (obj, ...object) => Object.assign(obj, ...object)
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
