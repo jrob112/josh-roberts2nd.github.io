@@ -37,7 +37,7 @@ var femaleCount = (array) =>{
     return females;
 }
 
-var oldestCustomer;
+var oldestCustomer = (array);
 
 var youngestCustomer;
 
