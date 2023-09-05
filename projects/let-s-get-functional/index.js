@@ -37,8 +37,8 @@ var femaleCount = (array) =>{
     return females;
 }
 
-var oldestCustomer = (array);
-
+var oldestCustomer = (array, name = '');
+   
 var youngestCustomer;
 
 var averageBalance;

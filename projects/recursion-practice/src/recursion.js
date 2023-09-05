@@ -75,16 +75,16 @@ if(n === 1 || n === -1){
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y, output=[]) {
   //base
-  if(x === y){
+  if(x === y || x - y === 1 || y - x === 1){
     return output;
   }
   //recursion
   if(x < y){
     output.push(x+1);
     return range(x+1, y, output);
-  }else{
-    output.push(y-1);
-    return range(x, y-1, output);
+  }else if(x > y){
+    output.unshift(y+1);
+    return range(x, y+1, output);
   }
 
 };
@@ -94,18 +94,49 @@ var range = function(x, y, output=[]) {
 // 8^2 = 8 x 8 = 64.  Here, 8 is the base and 2 is the exponent.
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
-var exponent = function(base, exp) {
+var exponent = function(base, exp, output = 1) {
+  //base
+  if(exp === 0){
+    return output;
+  }else if(exp === 1){
+    return output * base
+  }
+  //recursion
+ 
+  if(exp > 0){
+    output *= base
+    return exponent(base, exp -1, output)
+  }else{
+    output *= (1 / base)
+    return exponent(base, exp +1, output)
+  }
 };
-
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  //base
+  if(n === 0){
+    return false;
+  }else{
+    return true;
+  }
+  //recursion
+  if(n % 2 === 0){
+    powerOfTwo(n/2)
+  } 
 };
 
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+var reverse = function(string, split=[]) {
+  // base
+  if(string === ''){
+    return split.join('')
+  }
+  // recursion
+    split.unshift(string[0]);
+    return reverse(string.slice(1), split)
 };
 
 // 10. Write a function that determines if a string is a palindrome.
@@ -123,7 +154,19 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
-var multiply = function(x, y) {
+var multiply = function(x, y, sum = 0) {
+  
+  if(y === 0){
+    return sum;
+  }
+ 
+  if(x > 0 || y > 0){
+    sum += x;
+    return multiply(x, y-1, sum)
+  }else{
+    sum -= x;
+    return multiply(x, y+1, sum)
+  }
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
@@ -145,6 +188,10 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  // base
+
+  // recursion
+  
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
