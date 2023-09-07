@@ -309,7 +309,19 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
+
+var nthFibo = function(n, fibo=[0, 1], sum=0) {
+  // base => if n index exist
+  if(n<0){
+     return null
+  }else if(fibo.length-1 === n){
+    return fibo[n];
+  }console.log(fibo)
+  // recursion
+  sum = fibo[fibo.length-2] + fibo[fibo.length-1];
+  fibo.push(sum);
+  return nthFibo(n, fibo, sum)
+
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
@@ -406,10 +418,10 @@ var minimizeZeroes = function(array, output=[]) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array, output=[]) {
-  // base
-  if(array.length === 0){
-    return output;
-  }else if(array[0])
+  // // base
+  // if(array.length === 0){
+  //   return output;
+  // }else if(array[0])
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
