@@ -37,11 +37,29 @@ var femaleCount = (array) =>{
     return females;
 }
 
-var oldestCustomer = (array, name = '');
+var oldestCustomer = (array) =>{
+    let oldest = _.reduce(array, (accumalator, current) => {
+        if(current.age > accumalator.age){
+            return current
+        }return accumalator
+    })
+        return oldest.name;
+    };
    
-var youngestCustomer;
+var youngestCustomer = (array) =>{
+    let youngest = _.reduce(array, (accumalator, current) => {
+        if(current.age < accumalator.age){
+            return current
+        }return accumalator
+    })
+        return youngest.name;
+    };;
 
-var averageBalance;
+var averageBalance = (array) =>{
+    let average = _.reduce(array, (acc, cur) => {
+        
+    }, 0)
+};
 
 var firstLetterCount;
 

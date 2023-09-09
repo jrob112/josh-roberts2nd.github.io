@@ -1098,7 +1098,7 @@
 
 
     describe('33. Minimize zeroes', function() {
-      var input1 = [2,0,0,0,1,4];
+      var input1 = [2,0,0,0,1,4] ;
       var input2 = [2,0,0,0,1,0,0,4];
 
       it('should return an array', function() {

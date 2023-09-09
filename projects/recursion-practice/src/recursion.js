@@ -119,13 +119,11 @@ var powerOfTwo = function(n) {
   //base
   if(n === 0){
     return false;
-  }else{
+  }else if(n === 1){
     return true;
   }
   //recursion
-  if(n % 2 === 0){
-    powerOfTwo(n/2)
-  } 
+  return powerOfTwo(n/2)
 };
 
 // 9. Write a function that accepts a string a reverses it.
@@ -313,14 +311,17 @@ var fibonacci = function(n) {
 var nthFibo = function(n, fibo=[0, 1], sum=0) {
   // base => if n index exist
   if(n<0){
-     return null
-  }else if(fibo.length-1 === n){
-    return fibo[n];
-  }console.log(fibo)
-  // recursion
-  sum = fibo[fibo.length-2] + fibo[fibo.length-1];
-  fibo.push(sum);
-  return nthFibo(n, fibo, sum)
+    return null
+ }else if(n === 0){
+   return 0
+ 
+ }else if(fibo.length-1 === n){
+   return fibo[n];
+ }//console.log(fibo)
+ // recursion
+ sum = fibo[fibo.length-2] + fibo[fibo.length-1];
+ fibo.push(sum);
+ return nthFibo(n, fibo, sum)
 
 };
 
@@ -389,7 +390,7 @@ var compress = function(list, output=[]) {
   // base
   if(list.length === 0){
     return output;
-  }else if(output.length !== list[0]){
+  }else if(list[0] !== output[output.length-1]){
     output.push(list[0]);
   }
   // recursion
@@ -407,27 +408,64 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array, output=[]) {
+  let discard = [];
   // base 
-  if(array.length===0){
+  if(array.length === 0){
     return output;
-  }
+  }else if(output[output.length-1] === 0 && array[0] === 0){
+    discard.push(array[0])
+    
+  }else{
+  // recursion
+  output.push(array[0])
+}
+  return minimizeZeroes(array.slice(1), output)
 };
-
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array, output=[]) {
-  // // base
-  // if(array.length === 0){
-  //   return output;
-  // }else if(array[0])
+var alternateSign = function(array, output=[], index=0) {
+  // base
+  if(array.length === index){
+    return output;
+  }
+  //recursion
+  else if(index %2 !== 0 && array[index] > 0){
+    output.push(array[index]* -1)
+  }else if(index %2 === 0 && array[index] < 0){
+    output.push(array[index]* -1)
+  }else{
+  output.push(array[index])
+  }
+  return alternateSign(array, output, index +1)
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, output=[]) {
+  var obj = {
+   1: 'one',
+   2: 'two',
+   3: 'three',
+   4: 'four',
+   5: 'five',
+   6: 'six',
+   7: 'seven',
+   8: 'eight',
+   9: 'nine'
+  }
+  //base
+  if(str.length === 0){
+    return output.join('')
+  }else if(Object.keys(obj).includes(str[0])){
+    output.push(obj[str[0]])
+  }else{
+    output.push(str[0])
+  }
+  // recursion
+  return numToText(str.slice(1), output)
 };
 
 // *** EXTRA CREDIT ***
