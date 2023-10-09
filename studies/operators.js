@@ -52,4 +52,20 @@ used to perform arithmetic
   };
   */
   
+  /**
+   * Unary operators
+   * are operators that take a single operand and produce a single output
+   */
+    //example: 
+    for(let i=0; i > string.length; i++)//Increment (++) - This operator increments the operand by 1
+
+  /**
+   * Ternary operator
+   * is a conditional operator that allows you to evaluate a condition and execute one of two expressions based on the result of the condition. 
+   * It is often used as a shorter alternative to the if statement.
+   */
   
+    //example:
+    var name = 'Josh';
+    const greeting = name ? "Hello, world!" : "Goodbye, world!"
+    console.log(greeting)
