@@ -15,15 +15,15 @@ module.exports.identity = identity;
 
 /**
  * typeOf: takes in any value and returns the type of <value> as a string
- * @param {value} 
+ * @param {value} any value
  * @returns type of <value> as a string
  * 
  */
 module.exports.typeOf = typeOf;
 
 /**
- * First: if array is an array then it reurns the first value that is a number
- * @param {Array, number} 
+ * First: if array is an array then it returns the first value that is a number
+ * @param {Array, number} an array and any number
  * @returns the first number in an array, if first index is no number or NaN it returns the first value that is a number,
  * and if array is not an array it reutrns []
  */
@@ -33,7 +33,7 @@ module.exports.first = first;
 
 /**
  * Last: if array is an array then it reurns the last value that is a number
- * @param {Array, number} 
+ * @param {Array, number} an array and any number
  * @returns the last number in an array, if the last index is no number or NaN it returns the last value that is a number,
  * and if array is not an array it reutrns []
  */
@@ -43,8 +43,8 @@ module.exports.last = last;
 
 
 /**
- * indexOf:
- * @param {value, array} 
+ * indexOf:takes in an array and reutrns the index of the first occurance of value
+ * @param {value, array} an array and any value
  * @returns the index of <array> that is the first occurrance of <value>
  * 
  */
@@ -57,8 +57,7 @@ module.exports.idexOf = idexOf;
  * action Function to each value in the collection.
  * 
  * @param {Array or Object} collection: The collection over which to iterate.
- * @param {Function} action: The Function to be applied to each value in the 
- * collection
+ * @param {} doesnt have a return value
  */
 function each(collection, action) {
     if(Array.isArray(collection)) {
