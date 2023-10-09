@@ -75,9 +75,10 @@ module.exports.each = each;
 
 
 /**
- * Map: 
- * @param {*array or object} 
- * @returns {Function} action: The Function to be applied to each value, index, and the collection
+ * Map: takes in an array or object and returns an array of the populated values from the callback function
+ * @param {array or object} 
+ * @param {callback function} action: The Function to be applied to each value, index, and the collection
+ * @returns {array} will return an array of the populated values from the callback function
  * 
  */
 
@@ -99,10 +100,9 @@ module.exports.map = map;
 
 
 /**
- * Contains
- * @param {*array, value} 
- * @returns {Function} action: returns true if value is found in array, else returns false
- * 
+ * Contains: take an array and returns the boolean value of if the value is in the array
+ * @param {array, value} 
+ * @returns {boolean value} returns true if value is found in array, else returns false
  */
 
 
@@ -121,9 +121,9 @@ module.exports.unique = unique;
 
 
 /**
- * Filter
+ * Filter: take an array or an object and return an array of values that return truthy fom the callback function
  * @param {array or object, function} 
- * @returns {Function} action: returns an array of values that the Function was applied to each value, index, and the collection
+ * @returns {array} action: returns an array of values that the Function was applied to each value, index, and the collection
  *  
  * 
  */
@@ -132,11 +132,9 @@ module.exports.unique = unique;
 module.exports.filter = filter;
 
 /**
- * Reject:
+ * Reject: takes an array and returns an array of values that returns falsey from the callback function
  * @param {array, function} 
- * @returns {Function} action: call <function> for each element in <array> passing the arguments:
-*      the element, it's index, <array> and
- return a new array of elements for which calling <function> returned false
+ * @returns {array} returns an array of values that returns falsey from the callback function
  * 
  */
 
@@ -144,13 +142,9 @@ module.exports.filter = filter;
 module.exports.reject = reject;
 
 /**
- * Partition:
- * @param {array, funvtion} 
- * @returns {Function} action: 1) Call <function> for each element in <array> passing it the arguments:
-*       element, key, <array>
-*   2) Return an array that is made up of 2 sub arrays:
-*       0) An array that contains all the values for which <function> returned something truthy
-*       1) An array that contains all the values for which <function> returned something falsy
+ * Partition: takes an array and returns an array with 2 sub arrays, one having the values truthy and the other falsey
+ * @param {array, function} 
+ * @returns {array} returns an array with 2 sub arrays, one having the values truthy and the other falsey
  * 
  */
 
@@ -158,9 +152,9 @@ module.exports.reject = reject;
  module.exports.partition = partition;
 
  /**
- * Pluck:
+ * Pluck:takes an array of objects and returns an array of the values from the objects
  * @param {array, property} 
- * @returns return an array containing the value of <property> for every element in <array>
+ * @returns {array}return an array containing the value of <property> for every element in <array>
  * 
  */
 
@@ -168,16 +162,9 @@ module.exports.reject = reject;
 module.exports.pluck = pluck;
 
 /**
- * Every:
+ * Every:takes an array or an object an returns true is every element is truthy, else it returns false
  * @param {collection, function} 
- * @returns 1) Call <function> for every element of <collection> with the paramaters:
-*      if <collection> is an array:
-*          current element, it's index, <collection>
-*      if <collection> is an object:
-*          current value, current key, <collection>
-*   2) If the return value of calling <function> for every element is true, return true
-*   3) If even one of them returns false, return false
-*   4) If <function> is not provided, return true if every element is truthy, otherwise return false
+ * @returns {boolean} if every element is truthy, return; else return false
  */
 
 
@@ -185,42 +172,27 @@ module.exports.every = every;
 
 
  /**
- * Some:
+ * Some:takes an array or an object and returns true is at least one element is truthy; else return false
  * @param {collection, function} 
- * @returns 1) Call <function> for every element of <collection> with the paramaters:
-*       if <collection> is an array:
-*        current element, it's index, <collection>
-*       if <collection> is an object:
-*        current value, current key, <collection>
-*   2) If the return value of calling <function> is true for at least one element, return true
-*   3) If it is false for all elements, return false
-*   4) If <function> is not provided return true if at least one element is truthy, otherwise return false
+ * @returns {boolean}returns true is at least one element is truthy; else return false
  */
 
 
  module.exports.some = some;
 
  /**
- * Reduce:
- * @param {array, funvtion} 
- * @returns {Function} action:1) Call <function> for every element in <collection> passing the arguments:
-*         previous result, element, index
-*   2) Use the return value of <function> as the "previous result"
-*      for the next iteration
-*   3) On the very first iteration, use <seed> as the "previous result"
-*   4) If no <seed> was given, use the first element/value of <collection> as <seed> and continue to the next element
-*   5) After the last iteration, return the return value of the final <function> call
+ * Reduce:takes an array and returns the value of the final function call
+ * @param {array, function} 
+ * @returns {value} returns the value of the final function call
  */
 
 
 module.exports.reduce = reduce;
 
 /**
- * Extend:
+ * Extend:takes in an object an returns an updated object with the objects that where passed in
  * @param {object} 
- * @returns  1) Copy properties from <object 2> to <object 1>
-*   2) If more objects are passed in, copy their properties to <object 1> as well, in the order they are passed in.
-*   3) Return the update <object 1>
+ * @returns {object} returns an updated object with the objects that where passed in
  */
 
 
